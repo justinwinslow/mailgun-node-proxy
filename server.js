@@ -1,6 +1,9 @@
 var express = require('express'),
     mailgun = require('mailgun-js'),
+    config = require('./config.json'),
     app = express();
+
+    console.log(config.key);
 
 app.configure(function(){
   // Set port
@@ -12,7 +15,7 @@ app.configure(function(){
 app.post('/mail', function(req, res){
   var data = req.body;
 
-  mailgun('key-27u8fvlqultyil204j3aesrl1rkeoc10', data.domain)
+  mailgun(config.key, data.domain)
     .messages.send(data, function (error, response, body) {
       if (error) {
         res.send(500, error);
