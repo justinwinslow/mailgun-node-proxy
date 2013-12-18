@@ -3,8 +3,6 @@ var express = require('express'),
     config = require('./config.json'),
     app = express();
 
-    console.log(config.key);
-
 app.configure(function(){
   // Set port
   app.set('port', process.env.PORT || 3333);
