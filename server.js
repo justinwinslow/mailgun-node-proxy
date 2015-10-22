@@ -1,12 +1,13 @@
 var express = require('express'),
     mailgun = require('mailgun-js'),
     config = require('./config.json'),
+    bodyParser = require('body-parser'),
     app = express();
 
 // Set port
 app.set('port', process.env.PORT || 3333);
 // Use express bodyParser middleware to populate req.body
-app.use(express.bodyParser());
+app.use(bodyParser.raw());
 
 // Listen for post
 app.post('/mail', function(req, res){
