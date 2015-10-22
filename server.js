@@ -16,7 +16,7 @@ app.post('/mail', function(req, res){
   // Instantiate mailgun module with unique api key and domain
   mailgun(config.key, data.domain)
     // Send message
-    .messages.send(data, function (error, response, body) {
+    .messages().send(data, function (error, response, body) {
       // Handle errors
       if (error) {
         res.send(500, error);
