@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "express": "latest",
-    "body-parser": "latest",
-    "mailgun-js": "latest"
+    "express": "^4.0.0",
+    "body-parser": "^1.0.0",
+    "mailgun-js": "0.7.2"
   }
 }
