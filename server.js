@@ -19,9 +19,9 @@ app.post('/mail', function(req, res){
     .messages().send(data, function (error, response, body) {
       // Handle errors
       if (error) {
-        res.send(500, error);
+        res.status(500).send(error);
       } else {
-        res.send(200);
+        res.status(200);
       }
     });
 });
