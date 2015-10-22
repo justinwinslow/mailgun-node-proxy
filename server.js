@@ -3,12 +3,10 @@ var express = require('express'),
     config = require('./config.json'),
     app = express();
 
-app.configure(function(){
-  // Set port
-  app.set('port', process.env.PORT || 3333);
-  // Use express bodyParser middleware to populate req.body
-  app.use(express.bodyParser());
-});
+// Set port
+app.set('port', process.env.PORT || 3333);
+// Use express bodyParser middleware to populate req.body
+app.use(express.bodyParser());
 
 // Listen for post
 app.post('/mail', function(req, res){
