@@ -6,22 +6,20 @@ var express = require('express'),
 
 // Set port
 app.set('port', process.env.PORT || 3333);
-// Use express bodyParser middleware to populate req.body
-app.use(bodyParser.raw());
 
 // Listen for post
-app.post('/mail', function(req, res){
+app.post('/mail', bodyParser.urlencoded({extended: true}), function(req, res){
   var data = req.body;
 
   // Instantiate mailgun module with unique api key and domain
-  mailgun(config.key, data.domain)
+  mailgun({apiKey: config.key, domain: data.domain})
     // Send message
     .messages().send(data, function (error, response, body) {
       // Handle errors
       if (error) {
         res.status(500).send(error);
       } else {
-        res.status(200);
+        res.status(200).send();
       }
     });
 });
